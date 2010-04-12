@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/images" >
+        <file>resources/Svg.svg</file>
+        <file>resources/logo_V1_lightning_double_note.svg</file>
+        <file>resources/eyeball.svg</file>
+    </qresource>
+</RCC>
