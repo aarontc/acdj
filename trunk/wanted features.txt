@@ -1,0 +1,77 @@
+ACDJ
+
+	if a file is playable with any player, it will be playable with this program
+
+	Option for a verbose spash screen
+	Be able to ssh into the computer and send signals to the program (e.g. acdj --pause)
+	
+	Under the options menu
+		Sleep timer - only play music for xx minutes or until yy:zz
+		Alarm Clock - start playing music at xx:yy
+
+	minimize to system tray
+
+	Write out file with a different name according to the artist and song title
+
+	Decent Icons
+	
+	Click to change ratings (the star stuff)
+	
+	The help file will not only have help but it will also have essentially a tutorial on how to use all of the features included
+
+	Start up config will drop a config file in the ~/.ACDJ/ folder, has to be compatible with all future versions
+
+	All config files will be CLEAR and EASY TO READ in a text editor with proper comments
+
+	three seperate databases:
+		server - what music is available on a server. This option is not enabled if you don't have a server (you have to speccify in startup) 
+		local - what music is on the local system
+		changed - only the stuff that has changed, things like:
+			# times played
+			rating
+			track info
+
+	Auto organize option that guesses the artist and track name (integrated lookup online?)
+
+	Menus
+		Playlist
+		Settings
+		Management
+		Actions
+		Options
+
+	At the first start up
+		Where to store the data:
+			defaults to ~/.acdj/
+		Libraries: add the folders to a specific library - one for music, one for video/TV. These folders should be monitered for change
+			Should have two seperate dialogs - one for music, one for video
+		When you would like to sync the databases
+			should have the option on when to sync databases - when connected to certain networks (like when you are connected at home with the ESSID of "multipass")
+
+	Tabs
+		Music
+			Sources
+				Internet
+				Ampache
+				Local Collection
+			Artist and Song info
+			Collection
+				Sort by (should be a drop down menu)
+					Most recently added
+					Default
+				Search bar
+					should display matched results that are not in the local collection, but are in the server database. you can click on those results and it will transfer the file onto the local machine
+				
+		Videos
+
+	One thing to be included in the database, is an average decibel level. An option that should be included in the settings is an auto-adjust that raises that average up to a minimum level. "Auto gain"?
+
+	Color schemes
+	
+	Biasing for the random setting
+		not recently played
+		highly rated
+	Enqueue and dequeue
+	Playlist searching
+	
+	If you are ripping a CD, have it look the CD up online and fetch the album info/track names

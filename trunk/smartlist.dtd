@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE smplaylist [
+<!ELEMENT smplaylist (
+<!ELEMENT anyOf (title*, album*, artist*, genre*, playlist*)>
+<!ELEMENT allOf ( title?, album?, artist?, genre?, playlist*)>
+<!ELEMENT exclude (title*, album*, artist*, genre*, playlist*)>
+
+
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT album (#PCDATA)>
+<!ELEMENT artist (#PCDATA)>
+<!ELEMENT genre (#PCDATA)>
+<!ELEMENT playlist (#PCDATA)>
+
+<!ATTLIST album type CDATA #REQUIRED>
+<!ATTLIST title type CDATA #REQUIRED>
+<!ATTLIST artist type CDATA #REQUIRED>
+<!ATTLIST genre type CDATA #REQUIRED>
+]>
