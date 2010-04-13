@@ -21,7 +21,7 @@ option(USE_INCLUDED_SQLITE3
 if(USE_INCLUDED_SQLITE3)
 	include_directories("${PROJECT_SOURCE_DIR}/sqlite3")
 	add_subdirectory(sqlite3)
-	set(EXTRA_LIBS ${EXTRA_LIBS} sqlite3)
+	set(EXTRA_LIBS ${EXTRA_LIBS} sqlite3 pthread dl)
 endif(USE_INCLUDED_SQLITE3)
 
 
@@ -32,6 +32,7 @@ set(ACDJ_SOURCES
 	dialog_preferences.cpp
 	mainwindow.cpp
 	main.cpp
+	library.cpp
 )
 
 # another list, this time it includes all header files that should be treated with moc
@@ -85,11 +86,12 @@ include_directories(${CMAKE_BINARY_DIR})
 
 # here we instruct CMake to build "sample" executable from all of the source files
 add_executable(ACDJ ${ACDJ_SOURCES} ${ACDJ_MOC_SOURCES} ${HF_RC_SOURCES} ${HF_UI_HEADERS})
+add_executable(test test.cpp library.cpp)
 
 # last thing we have to do is to tell CMake what libraries our executable needs,
 # luckily FIND_PACKAGE prepared QT_LIBRARIES variable for us:
 target_link_libraries(ACDJ ${QT_LIBRARIES} ${EXTRA_LIBS})
-
+target_link_libraries(test ${EXTRA_LIBS})
 
 
 
