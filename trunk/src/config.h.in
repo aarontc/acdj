@@ -1,0 +1,4 @@
+// the configured options and settings for ACDJ
+#define ACDJ_VERSION_MAJOR @VERSION_MAJOR@
+#define ACDJ_VERSION_MINOR @VERSION_MINOR@
+
