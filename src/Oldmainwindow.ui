@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>615</width>
+    <height>587</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>AC DJ</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <widget class="QTreeWidget" name="trePlayList">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>0</y>
+      <width>431</width>
+      <height>511</height>
+     </rect>
+    </property>
+    <property name="alternatingRowColors">
+     <bool>true</bool>
+    </property>
+    <property name="sortingEnabled">
+     <bool>true</bool>
+    </property>
+    <property name="animated">
+     <bool>true</bool>
+    </property>
+    <property name="columnCount">
+     <number>2</number>
+    </property>
+    <column>
+     <property name="text">
+      <string comment="The artist for the given track">Artist</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string comment="The name of the given track">Title</string>
+     </property>
+    </column>
+    <item>
+     <property name="text">
+      <string>New Item</string>
+     </property>
+    </item>
+   </widget>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>615</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuPlaylist">
+    <property name="title">
+     <string>Playlist</string>
+    </property>
+    <widget class="QMenu" name="menuRandom">
+     <property name="title">
+      <string>Random</string>
+     </property>
+     <widget class="QMenu" name="menuBiasing">
+      <property name="title">
+       <string>Biasing</string>
+      </property>
+      <addaction name="actionNot_Recently_Played"/>
+      <addaction name="actionHighest_Rated"/>
+     </widget>
+     <addaction name="actionArtist"/>
+     <addaction name="actionAlbum"/>
+     <addaction name="actionSong"/>
+     <addaction name="menuBiasing"/>
+    </widget>
+    <widget class="QMenu" name="menuRepeat">
+     <property name="title">
+      <string>Repeat</string>
+     </property>
+     <addaction name="actionAlbum_2"/>
+     <addaction name="actionArtist_2"/>
+     <addaction name="actionSong_2"/>
+    </widget>
+    <addaction name="actionRandomize_Playlist"/>
+    <addaction name="actionClear_Playlist"/>
+    <addaction name="actionSave_Playlist"/>
+    <addaction name="actionSave_Playlist_As"/>
+    <addaction name="separator"/>
+    <addaction name="menuRepeat"/>
+    <addaction name="menuRandom"/>
+   </widget>
+   <widget class="QMenu" name="menuSettings">
+    <property name="title">
+     <string>Settings</string>
+    </property>
+    <widget class="QMenu" name="menuAuto_Gain">
+     <property name="title">
+      <string>Auto Gain</string>
+     </property>
+     <addaction name="actionEnable"/>
+     <addaction name="actionDisable"/>
+     <addaction name="separator"/>
+     <addaction name="actionConfigure"/>
+    </widget>
+    <addaction name="menuAuto_Gain"/>
+    <addaction name="actionConfigure_ACDJ"/>
+   </widget>
+   <widget class="QMenu" name="menuOptions">
+    <property name="title">
+     <string>Options</string>
+    </property>
+    <addaction name="actionSleep_Timer"/>
+    <addaction name="actionAlarm_Clock"/>
+   </widget>
+   <widget class="QMenu" name="menuActions">
+    <property name="title">
+     <string>Actions</string>
+    </property>
+    <addaction name="actionSkip_Forward"/>
+    <addaction name="actionSkip_Backwards"/>
+    <addaction name="actionPlay_Pause"/>
+    <addaction name="actionStop"/>
+    <addaction name="separator"/>
+    <addaction name="actionOpen_File_Disk"/>
+    <addaction name="actionMinimize_to_System_Tray"/>
+    <addaction name="actionExit_Program"/>
+   </widget>
+   <widget class="QMenu" name="menuManagement">
+    <property name="title">
+     <string>Management</string>
+    </property>
+    <addaction name="actionGet_Data"/>
+    <addaction name="actionEdit_Track_Settings"/>
+    <addaction name="separator"/>
+    <addaction name="actionUpdate_Libraries"/>
+    <addaction name="actionLibrary_Folders"/>
+    <addaction name="separator"/>
+    <addaction name="actionRip_A_Disk"/>
+    <addaction name="actionFind_Album_Art_Data"/>
+    <addaction name="separator"/>
+    <addaction name="actionManually_Sync_Databases"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout"/>
+    <addaction name="actionHelp_Files"/>
+    <addaction name="actionTutorials"/>
+    <addaction name="separator"/>
+    <addaction name="actionContact_Us"/>
+   </widget>
+   <addaction name="menuActions"/>
+   <addaction name="menuPlaylist"/>
+   <addaction name="menuManagement"/>
+   <addaction name="menuSettings"/>
+   <addaction name="menuOptions"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionSleep_Timer">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Sleep Timer</string>
+   </property>
+  </action>
+  <action name="actionAlarm_Clock">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Alarm Clock</string>
+   </property>
+  </action>
+  <action name="actionProgram_Settings">
+   <property name="text">
+    <string>Program Settings</string>
+   </property>
+  </action>
+  <action name="actionLibrary_Folders">
+   <property name="text">
+    <string>Library Folders</string>
+   </property>
+  </action>
+  <action name="actionArtist">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Artist</string>
+   </property>
+  </action>
+  <action name="actionAlbum">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Album</string>
+   </property>
+  </action>
+  <action name="actionSong">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Song</string>
+   </property>
+  </action>
+  <action name="actionNot_Recently_Played">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Not Recently Played</string>
+   </property>
+  </action>
+  <action name="actionHighest_Rated">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Highest Rated</string>
+   </property>
+  </action>
+  <action name="actionAlbum_2">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Album</string>
+   </property>
+  </action>
+  <action name="actionArtist_2">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Artist</string>
+   </property>
+  </action>
+  <action name="actionSong_2">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Song</string>
+   </property>
+  </action>
+  <action name="actionClear_Playlist">
+   <property name="text">
+    <string>Clear Playlist</string>
+   </property>
+  </action>
+  <action name="actionSave_Playlist">
+   <property name="text">
+    <string>Save Playlist</string>
+   </property>
+  </action>
+  <action name="actionSave_Playlist_As">
+   <property name="text">
+    <string>Save Playlist As...</string>
+   </property>
+  </action>
+  <action name="actionRandomize_Playlist">
+   <property name="text">
+    <string>Randomize Playlist</string>
+   </property>
+  </action>
+  <action name="actionGet_Data">
+   <property name="text">
+    <string>Get Data For Selected Track</string>
+   </property>
+  </action>
+  <action name="actionManually_Sync_Databases">
+   <property name="text">
+    <string>Manually Sync Database</string>
+   </property>
+  </action>
+  <action name="actionConfigure_ACDJ">
+   <property name="text">
+    <string>Configure ACDJ</string>
+   </property>
+  </action>
+  <action name="actionConfigure">
+   <property name="text">
+    <string>Configure</string>
+   </property>
+  </action>
+  <action name="actionEnable">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Enable</string>
+   </property>
+  </action>
+  <action name="actionDisable">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Disable</string>
+   </property>
+  </action>
+  <action name="actionUpdate_Libraries">
+   <property name="text">
+    <string>Update Libraries</string>
+   </property>
+  </action>
+  <action name="actionHelp_Files">
+   <property name="text">
+    <string>Help Files</string>
+   </property>
+  </action>
+  <action name="actionTutorials">
+   <property name="text">
+    <string>Tutorials</string>
+   </property>
+  </action>
+  <action name="actionSkip_Forward">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Skip Forward</string>
+   </property>
+  </action>
+  <action name="actionSkip_Backwards">
+   <property name="text">
+    <string>Skip Backwards</string>
+   </property>
+  </action>
+  <action name="actionPlay_Pause">
+   <property name="text">
+    <string>Play/Pause</string>
+   </property>
+  </action>
+  <action name="actionStop">
+   <property name="text">
+    <string>Stop</string>
+   </property>
+  </action>
+  <action name="actionOpen_File_Disk">
+   <property name="text">
+    <string>Open File/Disk</string>
+   </property>
+  </action>
+  <action name="actionExit_Program">
+   <property name="text">
+    <string>Exit ACDJ</string>
+   </property>
+  </action>
+  <action name="actionMinimize_to_System_Tray">
+   <property name="text">
+    <string>Minimize to System Tray</string>
+   </property>
+  </action>
+  <action name="actionFind_Album_Art_Data">
+   <property name="text">
+    <string>Find Album Art and Data</string>
+   </property>
+  </action>
+  <action name="actionRip_A_Disk">
+   <property name="text">
+    <string>Rip A Disk</string>
+   </property>
+  </action>
+  <action name="actionBitch_About_Problems">
+   <property name="text">
+    <string>Bitch About Problems</string>
+   </property>
+  </action>
+  <action name="actionConstructive_Feedback">
+   <property name="text">
+    <string>Constructive Feedback</string>
+   </property>
+  </action>
+  <action name="actionFeature_Ideas">
+   <property name="text">
+    <string>Ideas For Additional Features</string>
+   </property>
+  </action>
+  <action name="actionEdit_Track_Settings">
+   <property name="text">
+    <string>Edit Track Settings</string>
+   </property>
+  </action>
+  <action name="actionContact_Us">
+   <property name="text">
+    <string>Contact Us</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
