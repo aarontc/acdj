@@ -10,7 +10,8 @@ TARGET = ACDJ
 TEMPLATE = app
 SOURCES += main.cpp \
     mainwindow.cpp \
-    dialog_preferences.cpp
+    dialog_preferences.cpp \
+    controls.cpp
 HEADERS += mainwindow.h \
     dialog_preferences.h
 FORMS += mainwindow.ui \
