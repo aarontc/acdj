@@ -2,9 +2,9 @@
 #define CONTROLWIDGET_H
 
 #include <QWidget>
+#include <phonon/mediaobject.h>
 
-class QPushButton;
-class QHBoxLayout;
+class QAction;
 
 class ControlWidget : public QWidget
 {
@@ -14,12 +14,23 @@ public:
     ControlWidget(QWidget *parent = 0);
 	//~ControlWidget();
 
-private:
-	QHBoxLayout * layout;
-	QPushButton * backButton;
-	QPushButton * playPauseButton;
-	QPushButton * forwardButton;
+private slots:
+	void BackSlot();
+	void CommandSlot();
+	void NextSlot();
 
+private:
+	//set up functions
+	void SetUpActions();
+	void SetUpControlBar();
+
+	QAction * backAction;
+	QAction * commandAction;
+	QAction * nextAction;
+
+	Phonon::MediaObject *currentMedia;
+	Phonon::MediaSource *prevMedia;
+	Phonon::MediaSource *nextMedia;
 };
 
 #endif // CONTROLWIDGET_H
