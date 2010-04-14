@@ -1,16 +1,11 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QtGui/QMainWindow>
-#include <QtGui/QIcon>
-#include <QtGui/QSystemTrayIcon>
-#include <QCloseEvent>
-#include <QMessageBox>
+#include <QMainWindow>
+#include <QGridLayout>
 
-namespace Ui
-{
-	class MainWindow;
-}
+class QWidget;
+class ControlWidget;
 
 class MainWindow : public QMainWindow
 {
@@ -20,28 +15,35 @@ public:
 	MainWindow(QWidget *parent = 0);
 	~MainWindow();
 
-protected:
-	void closeEvent(QCloseEvent *event);
 
+	//new code
 
 private:
-	void createActions ();
-	void createTrayIcon ();
+	ControlWidget * controls;
+	QGridLayout * layout;
 
-	Ui::MainWindow *ui;
-	QSystemTrayIcon * stiTrayIcon;
-
-	QAction * acnMinimize;
-	QAction * acnMaximize;
-	QAction * acnRestore;
-	QAction * acnQuit;
-	QMenu * mnuTray;
+//protected:
+//	void closeEvent(QCloseEvent *event);
 
 
-private slots:
-	void on_actionOpen_File_Disk_triggered();
- void on_actionExit_Program_triggered();
-	void on_actionAbout_triggered();
+//private:
+//	void createActions ();
+//	void createTrayIcon ();
+//
+//	Ui::MainWindow *ui;
+//	QSystemTrayIcon * stiTrayIcon;
+//
+//	QAction * acnMinimize;
+//	QAction * acnMaximize;
+//	QAction * acnRestore;
+//	QAction * acnQuit;
+//	QMenu * mnuTray;
+//
+//
+//private slots:
+//	void on_actionOpen_File_Disk_triggered();
+// void on_actionExit_Program_triggered();
+//	void on_actionAbout_triggered();
 };
 
 #endif // MAINWINDOW_H
