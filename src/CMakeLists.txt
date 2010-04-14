@@ -34,6 +34,7 @@ set(ACDJ_SOURCES
 	main.cpp
 	library.cpp
 	controlwidget.cpp
+	musicmodewidget.cpp
 )
 
 # another list, this time it includes all header files that should be treated with moc
@@ -41,6 +42,7 @@ set(ACDJ_MOC_HEADERS
 	dialog_preferences.h
 	mainwindow.h
 	controlwidget.h
+	musicmodewidget.h
 )
 
 # some .ui files
