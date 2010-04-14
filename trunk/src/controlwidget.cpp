@@ -3,10 +3,13 @@
 #include <QMessageBox>
 
 ControlWidget::ControlWidget(QWidget *parent) :
-	QWidget(parent), currentMedia(0), prevMedia(0), nextMedia(0)
+	QToolBar(parent), currentMedia(0), prevMedia(0), nextMedia(0)
 {
 	SetUpActions();
-	SetUpControlBar();
+
+	addAction(backAction);
+	addAction(commandAction);
+	addAction(nextAction);
 }
 
 void ControlWidget::BackSlot()
@@ -52,13 +55,4 @@ void ControlWidget::SetUpActions()
 	connect(backAction, SIGNAL(triggered()), this, SLOT(BackSlot()));
 	connect(commandAction, SIGNAL(triggered()), this, SLOT(CommandSlot()));
 	connect(nextAction, SIGNAL(triggered()), this, SLOT(NextSlot()));
-}
-
-void ControlWidget::SetUpControlBar()
-{
-	QToolBar *bar = new QToolBar(this);
-
-	bar->addAction(backAction);
-	bar->addAction(commandAction);
-	bar->addAction(nextAction);
 }

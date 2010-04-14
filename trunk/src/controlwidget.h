@@ -1,12 +1,12 @@
 #ifndef CONTROLWIDGET_H
 #define CONTROLWIDGET_H
 
-#include <QWidget>
+#include <QToolBar>
 #include <phonon/mediaobject.h>
 
 class QAction;
 
-class ControlWidget : public QWidget
+class ControlWidget : public QToolBar
 {
 Q_OBJECT
 
@@ -22,7 +22,6 @@ private slots:
 private:
 	//set up functions
 	void SetUpActions();
-	void SetUpControlBar();
 
 	QAction * backAction;
 	QAction * commandAction;
