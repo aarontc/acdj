@@ -26,10 +26,6 @@ private:
 	QAction * backAction;
 	QAction * commandAction;
 	QAction * nextAction;
-
-	Phonon::MediaObject *currentMedia;
-	Phonon::MediaSource *prevMedia;
-	Phonon::MediaSource *nextMedia;
 };
 
 #endif // CONTROLWIDGET_H
