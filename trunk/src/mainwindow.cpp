@@ -1,10 +1,48 @@
-#include "controlwidget.h"
 #include "mainwindow.h"
+#include "musicmodewidget.h"
 
 #include <QtGui>
 
 MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent)
 {
-	//controls = new ControlWidget(this);
+	musicMode = new MusicModeWidget;
+	setCentralWidget(musicMode);
+
+	CreateActions();
+	CreateMenu();
+}
+
+void MainWindow::AddFile()
+{
+	QStringList files = QFileDialog::getOpenFileNames(this, QString("Select Music Files"),
+						QDesktopServices::storageLocation(QDesktopServices::MusicLocation));
+
+//	if(!files.isEmpty())
+//	{
+//
+//		foreach(QString string, files)
+//		{
+//			Phonon::MediaSource source(string);
+//			sources.append(source);
+//		}
+//	}
+}
+
+
+void MainWindow::CreateActions()
+{
+	addFileAct = new QAction(QString("Add &File to Playlist"), this);
+
+	exitAct = new QAction(QString("E&xit"), this);
+}
+
+void MainWindow::CreateMenu()
+{
+	QMenu * fileMenu = menuBar()->addMenu(QString("&File"));
+	fileMenu->addAction(addFileAct);
+	fileMenu->addAction(exitAct);
+
+	connect(addFileAct, SIGNAL(triggered()), this, SLOT(AddFile()));
+	connect(exitAct, SIGNAL(triggered()), this, SLOT(close()) );
 }

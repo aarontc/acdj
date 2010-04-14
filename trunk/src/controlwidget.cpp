@@ -3,7 +3,7 @@
 #include <QMessageBox>
 
 ControlWidget::ControlWidget(QWidget *parent) :
-	QToolBar(parent), currentMedia(0), prevMedia(0), nextMedia(0)
+	QToolBar(parent)
 {
 	SetUpActions();
 
@@ -37,19 +37,19 @@ void ControlWidget::SetUpActions()
 	backAction = new QAction(style()->standardIcon(QStyle::SP_MediaSkipBackward),
 				  QString("back"), this);
 	backAction->setShortcut(QString("Crl+b"));
-	//backAction->setDisabled(true);
+	backAction->setDisabled(true);
 
 	//setup command action
 	commandAction = new QAction(style()->standardIcon(QStyle::SP_MediaPlay),
 								QString("play"), this);
 	commandAction->setShortcut(QString("Crl+P"));
-	//commandAction->setDisabled(true);
+	commandAction->setDisabled(true);
 
 	//setup forward action
 	nextAction = new QAction(style()->standardIcon(QStyle::SP_MediaSkipForward),
 								QString("forward"), this);
 	nextAction->setShortcut(QString("Crl+F"));
-	//forwardAction->setDisabled(true);
+	nextAction->setDisabled(true);
 
 	//setup signals and slots
 	connect(backAction, SIGNAL(triggered()), this, SLOT(BackSlot()));
