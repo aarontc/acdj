@@ -1,17 +1,15 @@
 #include "musicmodewidget.h"
 #include <QtGui>
 #include "controlwidget.h"
+#include "playlistmodel.h"
 
 MusicModeWidget::MusicModeWidget(QWidget *parent) :
     QWidget(parent)
 {
-	QStringList headers;
-
-	headers << QString("Title") << QString("Artist") << QString("Album");
-	mediaTable = new QTableWidget(0, 3);
-	mediaTable->setHorizontalHeaderLabels(headers);
-	mediaTable->setSelectionMode(QAbstractItemView::SingleSelection);
-	mediaTable->setSelectionBehavior(QAbstractItemView::SelectRows);
+	QTableView *mediaTable = new QTableView();
+	QAbstractTableModel * model = new PlaylistModel;
+	mediaTable->setModel(model);
+	mediaTable->setSortingEnabled(true);
 
 	QVBoxLayout *grid = new QVBoxLayout;
 	grid->addWidget(new ControlWidget);
