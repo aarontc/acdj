@@ -1,5 +1,7 @@
 #include "songfile.h"
 #include <QStringList>
+#include <Phonon/MediaSource>
+#include <Phonon/MediaObject>
 
 SongFile::SongFile()
 {}

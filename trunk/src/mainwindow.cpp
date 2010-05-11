@@ -18,15 +18,16 @@ void MainWindow::AddFile()
 	QStringList files = QFileDialog::getOpenFileNames(this, QString("Select Music Files"),
 						QDesktopServices::storageLocation(QDesktopServices::MusicLocation));
 
-//	if(!files.isEmpty())
-//	{
-//
-//		foreach(QString string, files)
-//		{
-//			Phonon::MediaSource source(string);
-//			sources.append(source);
-//		}
-//	}
+	if(!files.isEmpty())
+	{
+//		Phonon::MediaObject *music =
+//				Phonon::createPlayer(Phonon::MusicCategory,
+//									 Phonon::MediaSource(files.at(0)));
+//		music->play();
+
+		musicMode->AddSong(files.first());
+
+	}
 }
 
 

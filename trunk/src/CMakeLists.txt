@@ -69,6 +69,7 @@ add_definitions(-Wall)
 # by default only QtCore and QtGui modules are enabled
 # other modules must be enabled like this:
 set(QT_USE_QTXML TRUE)
+set(QT_USE_PHONON TRUE)
 
 # this command finds Qt4 libraries and sets all required variables
 # note that it's Qt4, not QT4 or qt4
