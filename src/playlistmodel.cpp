@@ -1,27 +1,29 @@
 #include "playlistmodel.h"
 #include "songfile.h"
+#include <QList>
 #include <QStringList>
 #include <QtAlgorithms>
 
-PlaylistModel::PlaylistModel(QObject * parent)
-	:QAbstractTableModel(parent)
+PlaylistModel::PlaylistModel(QList<SongFile> * playlist, QObject * parent)
+	:QAbstractTableModel(parent), m_playlist(playlist), m_columnSorted(0),
+	 m_as_de(Qt::AscendingOrder)
 {
 	m_headers << tr("Title") << tr("Artist") << tr("Album");
 
 	SongFile file(tr("Waling with a ghost"), tr("The White Stripes"),
 				  tr("Waling with a ghost"), tr("Hi"));
 
-	m_playlist.append(file);
+	m_playlist->append(file);
 
 	file.SetTitle(tr("Automatic Stop"));
 	file.SetArtist(tr("The Strokes"));
 	file.SetAlbum(tr("Room on Fire"));
-	m_playlist.append(file);
+	m_playlist->append(file);
 }
 
 int PlaylistModel::rowCount(const QModelIndex & parent) const
 {
-	return m_playlist.count();
+	return m_playlist->count();
 }
 
 int PlaylistModel::columnCount(const QModelIndex &parent) const
@@ -34,12 +36,12 @@ QVariant PlaylistModel::data(const QModelIndex &index, int role) const
 	if(!index.isValid())
 		return QVariant();
 
-	if(index.row() >= m_playlist.count() || index.column() >= 3)
+	if(index.row() >= m_playlist->count() || index.column() >= 3)
 		return QVariant();
 
 	if(role == Qt::DisplayRole)
 	{
-		QStringList stringList = m_playlist.at(index.row()).GetStringList();
+		QStringList stringList = m_playlist->at(index.row()).GetStringList();
 		return stringList.at(index.column());
 	}
 	else
@@ -58,20 +60,31 @@ QVariant PlaylistModel::headerData(int section, Qt::Orientation orientation,
 		return QVariant();
 }
 
+void PlaylistModel::AddSong(const SongFile & aCopy)
+{
+	beginInsertRows(QModelIndex(), 0, 0);
+	m_playlist->prepend(aCopy);
+	endInsertRows();
+	sort(m_columnSorted, static_cast<Qt::SortOrder>(m_as_de));
+}
+
 void PlaylistModel::sort(int column, Qt::SortOrder order)
 {
+	m_columnSorted = column;
+	m_as_de = order;
+
 	if(order == Qt::AscendingOrder)
 	{
 		switch(column)
 		{
 		case 0:
-			qSort(m_playlist.begin(), m_playlist.end(), compare_title_as);
+			qSort(m_playlist->begin(), m_playlist->end(), compare_title_as);
 			break;
 		case 1:
-			qSort(m_playlist.begin(), m_playlist.end(), compare_artist_as);
+			qSort(m_playlist->begin(), m_playlist->end(), compare_artist_as);
 			break;
 		case 2:
-			qSort(m_playlist.begin(), m_playlist.end(), compare_album_as);
+			qSort(m_playlist->begin(), m_playlist->end(), compare_album_as);
 			break;
 		}
 	}
@@ -80,18 +93,18 @@ void PlaylistModel::sort(int column, Qt::SortOrder order)
 		switch(column)
 		{
 		case 0:
-			qSort(m_playlist.begin(), m_playlist.end(), compare_title_de);
+			qSort(m_playlist->begin(), m_playlist->end(), compare_title_de);
 			break;
 		case 1:
-			qSort(m_playlist.begin(), m_playlist.end(), compare_artist_de);
+			qSort(m_playlist->begin(), m_playlist->end(), compare_artist_de);
 			break;
 		case 2:
-			qSort(m_playlist.begin(), m_playlist.end(), compare_album_de);
+			qSort(m_playlist->begin(), m_playlist->end(), compare_album_de);
 			break;
 		}
 	}
 
-	dataChanged(createIndex(0, 0, this), createIndex(1, 1, this));
+	emit dataChanged(createIndex(0, 0, this), createIndex(m_playlist->count() - 1, 0, this));
 }
 
 bool PlaylistModel::compare_title_as(const SongFile &s1, const SongFile &s2)
